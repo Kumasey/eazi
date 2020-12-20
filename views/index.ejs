@@ -104,22 +104,24 @@
             </div>
    
 
+            <% if(search.length > 0) { %>
             <div class="second-part">
             
             
                 <div class="firstfour">
                     <div class="firbox">
+                        
                         <div class="firbox-heading">
                             <p class="firbox-btxt">Recently Viewed</p>
                             <p class="firbox-stxt">View More<i class="fas fa-chevron-right"></i></p>
                         </div>
                         <div class="firbox-gallery">
-                            <% if(search.length > 0) { %>
+                            
                                 <% search.forEach(item => { %>
                             <div class="firbox-box">
                                 <a href="" id="firbox-url"><img src="<%= item.img %>" alt="demo" class="fir-img"></a>
                                 <img src="./img/playstore.jpg" alt="vendor-logo" class="product-logo">
-                                <p id="price-box"><%= Item.name %></p>
+                                <p id="price-box"><%= item.name %></p>
                                 <p id="new-price-box"><%= item.price %></p>
                                 <p id="old-price-box"><%= item.old_price %></p>
                             </div>
@@ -152,14 +154,14 @@
                                 <p id="old-price-box">old Price</p>
                             </div> -->
                         <% })%>
-                        <%}%> 
+                       
                            
                         </div>
                         
                     </div>
                 
                 </div> 
-
+                <%}%> 
 
                 <div class="secondfour">
                     <p id="closing-txt">Eazycart.com is Nigeria’s leading online price comparison site that allows you to shop online for the best deals and lowest prices. Our mission is to help consumers use the power of information to easily find, compare and buy products online in less time and for the best price. You can read unbiased product reviews and compare prices online. Online shopping has never been as easy! Browse our large selection of fashion, clothing, consumer electronics, home and garden producsts now </p>
@@ -251,9 +253,7 @@
         
         function searchbtn() {
             var searchinput = document.getElementById("search-input").value;
-            fetch(`/search?q=${searchinput}`).then(res => res.json()).then(res => {
-                console.log(res);    
-            });
+            window.location.href = `/search?q=${searchinput}`;
         
         }
         </script>
